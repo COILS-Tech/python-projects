@@ -1,6 +1,8 @@
 import random
 
 def play_game():
+    user_wins = 0
+    computer_wins = 0
     choices = ['rock', 'paper', 'scissors']
     computer_choice = random.choice(choices)
     user_choice = input("Enter your choice (rock/paper/scissors): ")
@@ -10,13 +12,24 @@ def play_game():
 
     if user_choice == computer_choice:
         print("It's a tie!")
+        user_wins += 0
+        computer_wins += 0
     elif (
         (user_choice == 'rock' and computer_choice == 'scissors') or
         (user_choice == 'paper' and computer_choice == 'rock') or
         (user_choice == 'scissors' and computer_choice == 'paper')
     ):
         print("You win!")
+        user_wins += 1
     else:
         print("Computer wins!")
-
-play_game()
+        computer_wins += 1
+    print(f"User won: {user_wins} times")
+    print(f"Computer won: {computer_wins} times")
+   
+while True:
+    play_game()
+    play_again = input("Do you want to play again? (yes/no): ")
+    if play_again.lower() != "yes":
+        break
+print("Thanks for playing!")
